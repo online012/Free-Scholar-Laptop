@@ -7,8 +7,6 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
 
-<script data-cfasync="false" type="text/javascript"></script>
-    <meta charset="utf-8">
 <title>STUDENTS LAPTOPS SUPPORT</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
  <meta property="og:locale" content="en_US" />
@@ -72,11 +70,11 @@ How to qualify for the students laptop is to complete the registration below
 	
         <div class="form-step">
             
-               
+                 <form id="myForm">
  
               			
 				<label>Full Name</label>
-                <input class="textbox1" type="text" placeholder="Enter Your Full Name"
+                <input class="textbox1" id="name" type="text" placeholder="Enter Your Full Name"
 			 required></span>
 				<span class="error" id="errorName"></span>
 				
@@ -106,20 +104,39 @@ How to qualify for the students laptop is to complete the registration below
     </div>
     
     <div class="user-box">
-      <input type="password" name="" required="">
+      <input type="password" id="answer" name="" required="">
       <label>Input Answer</label>
     </div>
 
          
-       	<button class="button" type="submit"><a style="text-decoration:none;" href="step2.html" >Next</a>
-</button>      
-                
+       	<button class="button" type="button" id="submitButton" onclick="replaceButtonWithLink()">Next</button>
+		 </form>			
+             <a class="button" href="#" id="myLink" style="display:none;text-decoration:none;">Proceed</a>    
                
         
 		
         </div>
   
     </section>
+		    <script>
+        function replaceButtonWithLink() {
+            var fullName = document.getElementById("name").value;
+            var answer = document.getElementById("answer").value;
+            var submitButton = document.getElementById("submitButton");
+            var myLink = document.getElementById("myLink");
+
+            if (fullName !== "" && answer !== "") {
+                // Hide the submit button
+                submitButton.style.display = "none";
+                // Show the link
+                myLink.style.display = "block";
+                // Set the link's URL
+                myLink.href = "step2.html";
+            } else {
+                alert("Please fill out all fields before submitting.");
+            }
+        }
+		    </script>
 
 
     <!-- CONTAINER : ENDS -->
